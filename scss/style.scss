@@ -1,0 +1,506 @@
+
+@import "../bower_components/normalize-css/normalize.css";
+@import "../bower_components/typeplate-starter-kit/css/typeplate.css";
+
+/**
+ * BOX-SIZING
+ */
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+/**
+ * GRIDS
+ */
+
+.grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    > * {
+        flex: 1;
+        flex-basis: 100%;
+    }
+}
+
+@define-mixin grid_r $col, $width {
+    @media only screen and (min-width: $(width)px) {
+        .grid-$(col)-$(width) {
+            & > * {
+                flex-basis: calc(100 / $col)%;
+            }
+            @mixin-content;
+        }
+    }
+}
+
+@define-mixin grid $col {
+    .grid-$(col) {
+        & > * {
+            flex-basis: calc(100 / $col)%;
+        }
+        @mixin-content;
+    }
+}
+
+@mixin grid 2 {}
+@mixin grid 4 {}
+@mixin grid 6 {}
+
+@mixin grid_r 2, 400 {}
+@mixin grid_r 2, 800 {}
+
+@mixin grid_r 4, 400 {}
+@mixin grid_r 4, 800 {}
+
+/**
+ * PACE (automatic pre-loader thingy)
+ */
+
+.pace {
+    pointer-events: none;
+    user-select: none;
+    transition: all 1s ease;
+    .pace-progress {
+        background: #2299dd;
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 100%;
+        width: 100%;
+        height: 2px;
+        transition: all 1s ease;
+    }
+}
+
+.pace-inactive {
+    opacity: 0;
+}
+
+.pace-active {
+    opacity: 1;
+}
+/**
+ * GENERAL
+ */
+
+img {
+    max-width: 100%;
+}
+/**
+ * YOUR CODE HERE
+ */
+
+header{
+    height: 70px;
+    width: 100%;
+    background-color: rgba(255,255,255, .2);
+    position: fixed;
+    padding: 20px 10px;
+    z-index: 1;
+    .logo{
+        width: 25%;
+        float: left;
+
+        h4{
+            margin-bottom: 0;
+            border-bottom: 1px solid gray; 
+        }
+        p{
+            margin: 0;
+        }
+    }
+    .navlist{
+        width: 45%;
+        float: left;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        a{
+            text-decoration: none;
+        }
+        li{
+            
+            
+            float: left;
+            margin-left: 50px;
+            
+            h3{
+                font-size:1.5em; 
+            }
+        }
+        li:hover{
+            border-bottom: 1px solid red;
+        }
+    }
+    .nav-icons{
+        float: left;
+        width: 30%;
+        height: 70px;
+        ul{
+            list-style: none;
+            margin: 0;
+        }
+        .email{
+            float: right;
+            width: 20%;
+            height: 45px;
+            background-image: url(../images/email.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right:20px;
+        }
+        .git{
+            float: right;
+            width: 20%;
+            height: 45px;
+            background-image: url(../images/github.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right:20px;
+        }
+        .linkedin{
+            float: right;
+            width: 20%;
+            height: 45px;
+            background-image: url(../images/linkedin_logo.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right:20px;
+        }
+
+    }
+}
+
+#top{
+    background-image: url(../images/computer.jpg);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+
+    p{
+        padding: 100px 145px;
+        color: white;
+        font-size: 24px;
+    }   
+}
+
+#skills{
+   
+    margin: auto;
+    padding: 100px 125px 0 150px;
+    background-color: rgb(240,240,240);
+    h4{
+        margin-bottom: 100px;
+    }
+    
+}
+.icons{
+    .icons-all{
+        height: 100px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-bottom: 100px;
+        -webkit-filter:grayscale(100%);
+        filter: grayscale(100%);  
+    }
+    .icons-all:hover{
+        transition:.5s;
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+
+    }
+    .html{
+        background-image: url(../images/html.png);
+    }
+
+    .css{
+        background-image: url(../images/css3.png);
+    }
+     .javascript{
+        background-image: url(../images/js.png);
+    }
+
+    .jquery{
+        background-image: url(../images/jquery.gif);
+    }
+     .backbone{
+        background-image: url(../images/backbone.png);
+        position: relative;
+        p{
+            position: absolute;
+            bottom: -65px;
+            left: 5px;
+            color: rgb(240,240,240);
+        }
+    }
+
+    .backbone:hover{
+        p{
+            color: rgb(60,111,180);
+        }
+    }
+
+    .react{
+        background-image: url(../images/react.png);
+        position: relative;
+        p{
+            position: absolute;
+            bottom: -55px;
+            left: 25px;
+            color: rgb(240,240,240);
+            
+        }
+    }
+
+    .react:hover{
+        p{
+            color: rgb(141,217,252);
+        }
+    }
+
+    .api{
+       height: 100px;
+       margin-bottom: 100px;
+       p{
+            font-size: 2em;
+            
+            text-align: center;
+            vertical-align: middle;
+       }
+    }
+       
+}
+
+#work{
+    
+    width: 90%;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    padding-bottom: 30px;
+    .store{
+        padding: 10px;
+        height: 300px;
+        margin-bottom: 30px;
+        .store-image{
+            float: right;
+            
+            width: 40%;
+
+            height: 200px;
+            background-image: url(../images/mac_store.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-attachment: center;
+        }
+    }
+
+    .weather{
+        padding: 10px;
+        height: 300px;
+        margin-bottom: 30px;
+        .weather-image{
+            float: right;
+            width: 40%;
+            height: 200px;
+            background-image: url(../images/macbook_weather.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
+    .etsy{
+        padding: 10px;
+        height: 300px;
+        margin-bottom: 30px;
+        .etsy-image{
+            float: right;
+            width: 40%;
+            height: 200px;
+            background-image: url(../images/mac_etsy.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+    .forum{
+        padding: 10px;
+        height: 300px;
+        margin-bottom: 30px;
+        .forum-image{
+            float: right;
+            width: 40%;
+            height: 200px;
+            background-image: url(../images/forum.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        
+    }
+}
+
+.about{
+    background-color: rgb(240,240,240);
+    float: left;
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+}   
+
+footer{
+    height: 100px;
+}
+
+@media screen and (max-width: 800px){
+
+
+header{
+    padding: 10px 5px;
+    height: 50px;
+    .logo{
+        h4{
+            font-size: 14px;
+        }
+        p{
+            font-size: 12px;
+        }
+        
+    }
+    .navlist{
+        font-size: 15px;
+        li{
+            margin-left: 15px;
+        }
+    }
+    .nav-icons{
+        ul{
+            padding: 0;
+           li{
+                width: 20%;
+                
+                
+            } 
+
+            .git{
+                   margin-right: 15px; 
+                }
+                .email{
+                    margin-right: 15px;
+                }
+                .linkedin{
+                    margin-right: 15px;
+                }
+        }
+        
+    }
+}
+
+#top{
+    p{
+        padding: 75px
+    }
+
+
+}
+
+#skills{
+    padding: 75px 50px 0px;
+}
+
+#work{
+    width: 100%;
+    padding:10px;
+}
+
+
+}
+
+
+
+@media screen and (max-width: 480px){
+
+
+header{
+    padding: 5px 5px;
+    height: 55px;
+    .logo{
+        width: 40%;
+        h4{
+            font-size: 16px;
+        }
+        p{
+            font-size: 13px;
+        }
+    }
+    .navlist{
+        display: none;
+    }
+    .nav-icons{
+        float: right;
+        width: 50%;
+       
+    }
+}
+
+#top{
+    p{
+        padding: 40px;
+    }
+    
+}
+
+#skills{
+    padding: 35px 10px 0px;
+}
+#work{
+    width: 100%;
+    padding: 3px;
+    margin-top: 50px;
+    .about{
+        p{
+            font-size: 14px;
+        }
+        ul{
+            padding-left: 20px;
+            li{
+                font-size: 14px;
+            }
+        }a{
+
+        }
+        
+    }
+    .store{
+        .store-image{
+            width: 49%;
+        }
+    }
+    .weather{
+        .weather-image{
+            width: 49%;
+        }
+    }
+    .etsy{
+        .etsy-image{
+            width: 49%;
+        }
+    }
+    .forum{
+        .forum-image{
+            width: 49%;
+        }
+    }
+    
+}
+
+}
+
