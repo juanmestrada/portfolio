@@ -1,14 +1,15 @@
-// es5 polyfills, powered by es5-shim
-require("es5-shim")
+"use strict";
 
-// es6 polyfills, powered by babel
-require("babel/polyfill")
+require("es5-shim")   
+require("babel/register")
 
 var Promise = require('es6-promise').Promise
+var $ = require('jquery')
+var Backbone = require('backbone')
 
-import $ from 'jquery'
-import React, {Component} from 'react'
 
-import _ from 'underscore'
 
-console.log('javascript is working')
+
+
+
+
